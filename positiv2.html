@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kindness Generator 💖</title>
+
+  <!-- iPhone-Optimierung -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Kindness Generator" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/833/833472.png" />
+
+  <link rel="manifest" href="manifest.json" />
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: "Poppins", sans-serif;
+      color: #333;
+      background: linear-gradient(135deg, #ffb6c1, #ffd6a5, #b5e48c, #a0c4ff);
+      background-size: 400% 400%;
+      animation: gradientMove 15s ease infinite;
+      text-align: center;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 20px;
+      color: #fff;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+    }
+
+    .affirmation-box {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 25px 40px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      font-size: 1.3em;
+      max-width: 80%;
+      transition: transform 0.3s ease;
+    }
+
+    .affirmation-box:hover {
+      transform: scale(1.03);
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 15px 35px;
+      font-size: 1.2em;
+      color: white;
+      background-color: #ff4d4d;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #ff1a1a;
+      transform: scale(1.05);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.9em;
+      color: white;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 Kindness Generator 💖</h1>
+  <div class="affirmation-box" id="affirmation">
+    Klicke auf den roten Button, um eine schöne Affirmation zu erhalten!
+  </div>
+  <button onclick="generateAffirmation()">✨ Neue Affirmation ✨</button>
+
+  <footer>Mit Liebe erstellt 🌷</footer>
+
+  <script>
+    // Viele schöne Affirmationen ✨
+    const affirmations = [
+      "Du bist genug, genau so wie du bist.",
+      "Heute ist ein guter Tag, um freundlich zu sein – auch zu dir selbst.",
+      "Du bringst Licht in das Leben anderer.",
+      "Jeder kleine Schritt zählt – und du machst Fortschritte.",
+      "Du darfst stolz auf dich sein.",
+      "Lächle – du machst die Welt schöner.",
+      "Du bist mutig, stark und liebevoll.",
+      "Alles, was du brauchst, steckt bereits in dir.",
+      "Deine Freundlichkeit ist ansteckend.",
+      "Du verdienst Ruhe, Frieden und Freude.",
+      "Jeder Tag bietet dir eine neue Chance, zu wachsen.",
+      "Du bist ein Geschenk für diese Welt.",
+      "Selbst kleine Taten der Liebe verändern Großes.",
+      "Deine Energie strahlt Positivität aus.",
+      "Du darfst Fehler machen – sie zeigen, dass du lebst.",
+      "Du bist einzigartig, und das ist deine größte Stärke.",
+      "In dir steckt unendlich viel Potenzial.",
+      "Heute darfst du einfach glücklich sein.",
+      "Du hast alles, was du brauchst, um deinen Weg zu gehen.",
+      "Du bist geliebt, einfach weil du du bist.",
+      "Dein Lächeln kann jemandem den Tag retten.",
+      "Vertraue darauf, dass das Leben es gut mit dir meint.",
+      "Frieden beginnt in dir – und du trägst ihn in die Welt.",
+      "Jeder Atemzug ist eine neue Möglichkeit für Freude.",
+      "Du darfst einfach du selbst sein – und das ist wundervoll."
+    ];
+
+    function generateAffirmation() {
+      const randomIndex = Math.floor(Math.random() * affirmations.length);
+      const affirmationBox = document.getElementById("affirmation");
+      affirmationBox.textContent = affirmations[randomIndex];
+    }
+
+    // Optional: PWA Service Worker Registrierung
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js").catch(console.error);
+    }
+  </script>
+</body>
+</html>
